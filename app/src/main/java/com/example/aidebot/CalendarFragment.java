@@ -164,7 +164,9 @@ public class CalendarFragment extends Fragment {
                                                 SublimeRecurrencePicker.RecurrenceOption recurrenceOption,
                                                 String recurrenceRule) {
 
-                SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-mm-dd", Locale.US);
+                SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                System.out.println(selectedDate.getStartDate().getTime());
+                System.out.println(selectedDate.getEndDate().getTime());
                 mDateStart = formatDate.format(selectedDate.getStartDate().getTime());
                 mDateEnd = formatDate.format(selectedDate.getEndDate().getTime());
 
