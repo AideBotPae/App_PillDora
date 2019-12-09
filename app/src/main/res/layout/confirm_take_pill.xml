@@ -22,7 +22,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:baselineAligned="true"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center_vertical|center_horizontal">
 
                 <TextView
                     style="@style/ProductNameListStyle"
@@ -32,7 +33,7 @@
                     android:lines="2"
                     android:paddingTop="5dp"
                     android:singleLine="false"
-                    android:text="Are you sure you want to introduce this new medicine to your Inventory?"
+                    android:text="Is this the pill you are going to take?"
                     android:textColor="@color/blanco"
                     android:textSize="15dp" />
 
@@ -69,7 +70,7 @@
                             android:textSize="12dp" />
 
                         <TextView
-                            android:id="@+id/Name_drug_take"
+                            android:id="@+id/Name_drug_delete"
                             style="@style/ProductQuantityListStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -88,40 +89,15 @@
                             style="@style/ProductPriceListStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pills to take:"
+                            android:text="Pills in the box:"
                             android:textSize="12dp" />
 
                         <TextView
-                            android:id="@+id/Quantity_take"
+                            android:id="@+id/Quantity_delete"
                             style="@style/ProductQuantityListStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="40 pills"
-                            android:textColor="@color/blanco"
-                            android:textSize="12dp" />
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:baselineAligned="true"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            style="@style/ProductPriceListStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Exp Date:"
-                            android:textSize="12dp" />
-
-                        <TextView
-                            android:id="@+id/end_date_delete"
-                            style="@style/ProductQuantityListStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2020-04-02"
                             android:textColor="@color/blanco"
                             android:textSize="12dp" />
 
@@ -136,7 +112,7 @@
                     android:gravity="center">
 
                     <Button
-                        android:id="@+id/YesTake"
+                        android:id="@+id/YesDelete"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_centerHorizontal="true"
@@ -159,7 +135,7 @@
                     android:layout_gravity="center">
 
                     <Button
-                        android:id="@+id/NoTake"
+                        android:id="@+id/NotDelete"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_alignParentRight="true"

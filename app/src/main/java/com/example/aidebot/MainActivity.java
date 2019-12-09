@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fab1.setOnClickListener(this);
         FloatingActionButton fab2 = findViewById(R.id.new_prescription);
         fab2.setOnClickListener(this);
+        FloatingActionButton fab3 = findViewById(R.id.taking_pill);
+        fab3.setOnClickListener(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -49,8 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Fragment per defecte
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new TreatmentsFragment()).commit();
-            navigationView.setCheckedItem(R.id.treatments);
+                    new HomeFragment()).commit();
+            navigationView.setCheckedItem(R.id.home);
         }
     }
 
@@ -74,16 +76,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
 
             case R.id.new_med:
-                getSupportActionBar().setTitle("AideBot - New Medicine \uD83D\uDC8A");
+                getSupportActionBar().setTitle("New Medicine \uD83D\uDC8A");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new NewMedFragment()).commit();
                 break;
 
-
             case R.id.new_prescription:
-                getSupportActionBar().setTitle("AideBot - New Prescription \uD83D\uDCC3");
+                getSupportActionBar().setTitle("New Prescription \uD83D\uDCC3");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new NewPrescriptionFragment()).commit();
+                break;
+
+            case R.id.taking_pill:
+                getSupportActionBar().setTitle("Take Pill \uD83D\uDC8A");
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new TakePillFragment()).commit();
                 break;
 
             default:
@@ -95,23 +102,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         menu.collapse();
         switch (item.getItemId()) {
+            case R.id.home:
+                getSupportActionBar().setTitle("Home \uD83C\uDFE0");
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new HomeFragment()).commit();
+                break;
+
             case R.id.treatments:
-                getSupportActionBar().setTitle("AideBot - Treatments \uD83C\uDFE5");
+                getSupportActionBar().setTitle("Treatments \uD83C\uDFE5");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new TreatmentsFragment()).commit();
                 break;
             case R.id.history:
-                getSupportActionBar().setTitle("AideBot - History \uD83D\uDCD6");
+                getSupportActionBar().setTitle("History \uD83D\uDCD6");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HistoryFragment()).commit();
                 break;
             case R.id.inventory:
-                getSupportActionBar().setTitle("AideBot - Inventory ⚖️");
+                getSupportActionBar().setTitle("Inventory ⚖️");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new InventoryFragment()).commit();
                 break;
             case R.id.calendar:
-                getSupportActionBar().setTitle("AideBot - Calendar \uD83D\uDCC5");
+                getSupportActionBar().setTitle("Calendar \uD83D\uDCC5");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new CalendarFragment()).commit();
                 break;
