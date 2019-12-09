@@ -1,7 +1,0 @@
-
-{"user_id":"hamza","function":"INVENTORY","parameters":{}}
-{"user_id":"hamza","function":"HISTORY","parameters":{"date":"08/12/2019"}}
-{"user_id":"hamza","function":"TASKS CALENDAR","parameters":{"date":"08/12/2019"}}
-{"user_id":"hamza","function":"JOURNEY","parameters":{"departure_date":"10/12/2019","arrival_date":"31/12/2019"}}
-{"user_id":"hamza","function":"INTRODUCE MEDICINE","parameters":{"quantity":"2","CN":"664029.6","expiration_date":"10/01/2022"}}
-{"user_id":"hamza","function":"INTRODUCE PRESCRIPTION","parameters":{"end_date":"31/12/2019","quantity":"56","freq":"2","CN":"664029.6"}}
