@@ -1,2 +1,2 @@
-include ':app'
-rootProject.name='AideBot'
+include ':app', ':Presentation'
+rootProject.name = 'AideBot'
