@@ -2,6 +2,7 @@ package com.example.aidebot.configuration;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.aidebot.LoginActivity;
+import com.example.aidebot.MainActivity;
 import com.example.aidebot.R;
+import com.example.aidebot.Storage.InternalStorage;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,12 +27,15 @@ public class Account extends Fragment {
 
     AlertDialog alertDialog;
     View mcontainer;
+    InternalStorage in;
+    String username;
     private static final String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mcontainer = inflater.inflate(R.layout.account, container, false);
-
+        in = new InternalStorage(mcontainer.getContext());
+        username = in.getUsername();
         Button change_password = mcontainer.findViewById(R.id.change_password);
         Button change_language = mcontainer.findViewById(R.id.change_language);
         Button change_postalcode = mcontainer.findViewById(R.id.change_postalcode);
@@ -120,8 +127,9 @@ public class Account extends Fragment {
                                 } else {
                                     new_password_1.setError(null);
                                     alertDialog.cancel();
-                                    //PASSWORD IS CORRECT, CHANGE
-                                    //CODE CHANGING PASSWORD
+                                    //PASSWORD IS CORRECT, CHANGE CODE CHANGING PASSWORD
+                                    // get USERNAME AND PHOTO
+                                    in.setValue(username,"password", new_password_1_str);
                                 }
                             }
                         }
@@ -167,6 +175,7 @@ public class Account extends Fragment {
                         } else {
                             //used to clear the error
                             errorTextview.setError(null);
+                            in.setValue(username,"language", language);
                             alertDialog.cancel();
                         }
                     }
@@ -187,8 +196,8 @@ public class Account extends Fragment {
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(final DialogInterface dialogInterface) {
-
                 final EditText new_postal_code = alertDialog.findViewById(R.id.new_postal_code);
+                new_postal_code.setHint(in.getValue(username, "postal_code"));
                 final Button submit_postal_code = alertDialog.findViewById(R.id.submit_postal_code);
                 submit_postal_code.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -199,6 +208,7 @@ public class Account extends Fragment {
                             new_postal_code.setError("Enter a valid PostCode");
                         } else {
                             //used to clear the error
+                            in.setValue(username,"postal_code", postal_code);
                             new_postal_code.setError(null);
                             alertDialog.cancel();
 
@@ -221,10 +231,10 @@ public class Account extends Fragment {
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(final DialogInterface dialogInterface) {
-
                 final EditText new_email = alertDialog.findViewById(R.id.new_email);
-                final Button submit_postal_code = alertDialog.findViewById(R.id.submit_postal_code);
-                submit_postal_code.setOnClickListener(new View.OnClickListener() {
+                new_email.setHint(in.getValue(username, "email_user"));
+                final Button submit_email = alertDialog.findViewById(R.id.submit_postal_code);
+                submit_email.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         String email = new_email.getText().toString();
@@ -232,6 +242,7 @@ public class Account extends Fragment {
                         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                             new_email.setError("Enter a valid email address");
                         } else {
+                            in.setValue(username,"email_user", email);
                             new_email.setError(null);
                             alertDialog.cancel();
                         }
@@ -253,8 +264,8 @@ public class Account extends Fragment {
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(final DialogInterface dialogInterface) {
-
                 final EditText new_email = alertDialog.findViewById(R.id.new_email);
+                new_email.setHint(in.getValue(username, "email_tutor"));
                 final Button submit_postal_code = alertDialog.findViewById(R.id.submit_postal_code);
                 submit_postal_code.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -264,6 +275,7 @@ public class Account extends Fragment {
                         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                             new_email.setError("Enter a valid email address");
                         } else {
+                            in.setValue(username,"email_tutor", email);
                             new_email.setError(null);
                             alertDialog.cancel();
                         }
@@ -293,6 +305,14 @@ public class Account extends Fragment {
                     @Override
                     public void onClick(View view) {
                         //DELETE ACCOUNT
+                        in.removeAccount();
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("LOGOUT", true);
+                        startActivity(intent);
+
+                        getActivity().finish();
+                        System.exit(0);
                         alertDialog.cancel();
                     }
                 });

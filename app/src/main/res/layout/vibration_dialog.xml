@@ -40,21 +40,21 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/disabledVibration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginRight="20dp"
-            android:clickable="true"
             android:layout_marginLeft="20dp">
 
             <CheckBox
+                android:onClick="onCheckboxClicked"
+                android:id="@+id/disabledVibration_cb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="false"
                 android:checked="false"></CheckBox>
 
             <Button
+                android:id="@+id/disabledVibration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/view1"
@@ -63,28 +63,27 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/predeterminedVibration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginRight="20dp"
-            android:clickable="true"
             android:layout_marginLeft="20dp">
 
             <CheckBox
+                android:onClick="onCheckboxClicked"
+                android:id="@+id/predeterminedVibration_cb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="false"
                 android:checked="true"></CheckBox>
 
             <Button
+                android:id="@+id/predeterminedVibration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:text="Predetermined" />
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/shortVibration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -93,19 +92,20 @@
             android:layout_marginLeft="20dp">
 
             <CheckBox
+                android:onClick="onCheckboxClicked"
+                android:id="@+id/shortVibration_cb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="false"
                 android:checked="false"></CheckBox>
 
             <Button
+                android:id="@+id/shortVibration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:text="Short" />
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/longVibration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -114,12 +114,14 @@
             android:layout_marginLeft="20dp">
 
             <CheckBox
+                android:onClick="onCheckboxClicked"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="false"
+                android:id="@+id/longVibration_cb"
                 android:checked="false"></CheckBox>
 
             <Button
+                android:id="@+id/longVibration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

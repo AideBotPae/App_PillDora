@@ -1,5 +1,7 @@
 package com.example.aidebot;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -28,20 +30,22 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.aidebot.Storage.InternalStorage;
+
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class RegistrationActivityOptional extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
-    String birth_date;
-    String age;
-
+    String birth_date, postal_code, gender, age;
+    Bitmap roundView;
     AlertDialog alertDialog;
     Context mcontainer;
 
@@ -162,9 +166,9 @@ public class RegistrationActivityOptional extends AppCompatActivity {
         EditText birth_date_txt = findViewById(R.id.add_birthdate);
         Spinner gender_txt = findViewById(R.id.add_gender);
 
-        String postal_code = postal_code_txt.getText().toString();
+        postal_code = postal_code_txt.getText().toString();
         birth_date = birth_date_txt.getText().toString();
-        String gender = gender_txt.getSelectedItem().toString();
+        gender = gender_txt.getSelectedItem().toString();
 
         if (postal_code.isEmpty() || postal_code.length() < 3) {
             postal_code_txt.setError("Enter a valid PostCode");
@@ -193,18 +197,31 @@ public class RegistrationActivityOptional extends AppCompatActivity {
     }
 
 
-    public void onSignUPFailed() {
+    private void onSignUPFailed() {
         Toast.makeText(getBaseContext(), "Unable to create account. Try again!", Toast.LENGTH_LONG).show();
         Button signUp_btn = findViewById(R.id.signUp_button);
         signUp_btn.setEnabled(true);
     }
 
-    public void onSignUPSuccess() {
+    private void onSignUPSuccess() {
         Button signUp_btn = findViewById(R.id.signUp_button);
+        addToUser();
         signUp_btn.setEnabled(true);
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }
+
+    private void addToUser(){
+        InternalStorage in = new InternalStorage(RegistrationActivityOptional.this);
+        String username = in.getUsername();
+        HashMap<String, String> new_user = in.getInformation(username);
+        new_user.put("gender", gender);
+        new_user.put("birth_day", birth_date);
+        new_user.put("postal_code", postal_code);
+        in.createUser(new_user);
+        in.savePhoto(roundView, username);
+    }
+
 
     //Handlers Calendar uniq day selection
     private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
@@ -287,7 +304,7 @@ public class RegistrationActivityOptional extends AppCompatActivity {
                     if (resultCode == Activity.RESULT_OK && data != null) {
                         Bitmap selectedImage = (Bitmap) data.getExtras().get("data");
                         Bitmap imageView = selectedImage;
-                        Bitmap roundView = getCroppedBitmap (imageView);
+                        roundView = getCroppedBitmap (imageView);
                         ImageView add_photo = findViewById(R.id.add_photo_here);
                         add_photo.setImageBitmap(roundView);
                         alertDialog.cancel();
@@ -307,7 +324,7 @@ public class RegistrationActivityOptional extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                             Bitmap imageView = BitmapFactory.decodeStream(imageStream);
-                            Bitmap roundView = getCroppedBitmap (imageView);
+                            roundView = getCroppedBitmap (imageView);
                             ImageView add_photo = findViewById(R.id.add_photo_here);
                             add_photo.setImageBitmap(roundView);
                             alertDialog.cancel();

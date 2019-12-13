@@ -12,12 +12,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.aidebot.Storage.InternalStorage;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity"; //for logger
     private static final int REQUEST_SIGNUP = 0; // in order to check number max of errors
+    private String username;
+    private InternalStorage in;
 
     /*      PATTERN MATCHING --> used to check password complexity
              ^                 # start-of-string
@@ -31,10 +35,6 @@ public class LoginActivity extends AppCompatActivity {
     */
     private static final String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
 
-    //@Bind(R.id.username) EditText username_txt;
-    //@Bind(R.id.password) EditText password_txt;
-    //@Bind(R.id.signUp_text) TextView signUp_text;
-    //@Bind(R.id.signIN_button) Button signIN_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        //CHECK IF USER DID NOT LOGGED OUT SO CACHÉ ENTERS DIRECTLY:
+        in = new InternalStorage(LoginActivity.this);
+        username = in.getUsername();
+        if(!username.isEmpty()){
+            Log.d(TAG, "Due to Caché memory, directly entered to Main");
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        }
 
         //In order to set up new Registration as user clicks on "Don't Have an Account?  Sign Up"
         TextView signUp_text = findViewById(R.id.signUp_text);
@@ -124,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
 
         EditText username_txt = findViewById(R.id.username);
         EditText password_txt = findViewById(R.id.password);
-        String username = username_txt.getText().toString();
+        username = username_txt.getText().toString();
         String password = password_txt.getText().toString();
 
         if (username.isEmpty()) {
@@ -161,6 +169,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
         Button signIN_btn = findViewById(R.id.signIN_button);
+        InternalStorage in = new InternalStorage(LoginActivity.this);
+        in.setUsername(username);
         signIN_btn.setEnabled(true);
         startActivity(new Intent(this, MainActivity.class));
         finish();

@@ -1,13 +1,20 @@
 package com.example.aidebot;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
+import com.example.aidebot.Storage.InternalStorage;
 import com.example.aidebot.configuration.ConfigurationSystem;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.HashMap;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -21,11 +28,20 @@ import androidx.drawerlayout.widget.DrawerLayout;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
     FloatingActionsMenu menu;
+    private String username;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (getIntent().getBooleanExtra("LOGOUT", false))
+        {
+            finish();
+        }
+        //get USERNAME AND PHOTO
+        InternalStorage in = new InternalStorage(MainActivity.this);
+        username = in.getUsername();
 
         FloatingActionButton fab1 = findViewById(R.id.new_med);
         fab1.setOnClickListener(this);
@@ -147,6 +163,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ConfigurationSystem()).commit();
                 break;
+
+            case R.id.logout:
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setView(getLayoutInflater().inflate(R.layout.log_out, null));
+
+                final AlertDialog alertDialog = builder.create();
+                // To prevent a dialog from closing when the positive button clicked, set onShowListener to
+                // the AlertDialog
+                alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                    @Override
+                    public void onShow(final DialogInterface dialogInterface) {
+
+                        final Button YesDelete = alertDialog.findViewById(R.id.YesDelete);
+                        final Button NotDelete = alertDialog.findViewById(R.id.NotDelete);
+
+                        YesDelete.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                //DELETE ACCOUNT
+                                InternalStorage in = new InternalStorage(MainActivity.this);
+                                in.removeUsername();
+                                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                                alertDialog.cancel();
+                            }
+                        });
+                        NotDelete.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                alertDialog.cancel();
+                            }
+                        });
+
+                    }
+                });
+                alertDialog.show();
         }
 
         drawer.closeDrawer(GravityCompat.START);

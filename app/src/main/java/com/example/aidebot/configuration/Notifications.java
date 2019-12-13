@@ -7,11 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 
 import com.example.aidebot.R;
+import com.example.aidebot.Storage.InternalStorage;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,11 +25,14 @@ public class Notifications extends Fragment {
     AlertDialog alertDialog;
     View mcontainer;
     String vibration_notification,  light_notification, priority_notification;
-    Boolean tones_notification, email_notification;
+    String tones_notification, email_notification;
+    InternalStorage in;
+    String username;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mcontainer = inflater.inflate(R.layout.notifications, container, false);
-
+        in = new InternalStorage(mcontainer.getContext());
+        username = in.getUsername();
         Switch notification_tones = (Switch) mcontainer.findViewById(R.id.notification_tones);
         Switch notification_email = (Switch) mcontainer.findViewById(R.id.notification_email);
 
@@ -37,12 +42,14 @@ public class Notifications extends Fragment {
         Button notification_priority = mcontainer.findViewById(R.id.notification_priority);
 
         //DEFAULT VALUES;
-        vibration_notification="Predetermined"; //"Predetermined","Default","Long","Short"
-        light_notification="CYAN";  //"NONE", "CYAN", "RED", "YELLOW"
-        priority_notification="DEFAULT";   //"DEFAULT", "HIGH", "LOW", "MAX", "MIN"
+        vibration_notification=in.getValue(username, "vibration"); //"Predetermined","Default","Long","Short"
+        light_notification=in.getValue(username, "light");;  //"NONE", "CYAN", "RED", "YELLOW"
+        priority_notification=in.getValue(username, "priority");;   //"DEFAULT", "HIGH", "LOW", "MAX", "MIN"
+        tones_notification=in.getValue(username, "tone");;
+        email_notification=in.getValue(username, "email_notification");;
 
-        tones_notification=Boolean.TRUE;
-        email_notification=Boolean.FALSE;
+        notification_tones.setChecked(tones_notification.equals("ON"));
+        notification_email.setChecked(email_notification.equals("ON"));
 
         button_to_home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,12 +86,14 @@ public class Notifications extends Fragment {
 
         notification_tones.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                tones_notification=isChecked;
+                tones_notification=isChecked?"ON":"OFF";
+                in.setValue(username,"tone", tones_notification);
             }
         });
         notification_email.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                email_notification=isChecked;
+                email_notification=isChecked?"ON":"OFF";
+                in.setValue(username,"email_notification", email_notification);
             }
         });
         return mcontainer;
@@ -100,15 +109,18 @@ public class Notifications extends Fragment {
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(final DialogInterface dialogInterface) {
-                LinearLayout longVibration = alertDialog.findViewById(R.id.longVibration);
-                LinearLayout shortVibration = alertDialog.findViewById(R.id.shortVibration);
-                LinearLayout predeterminedVibration = alertDialog.findViewById(R.id.predeterminedVibration);
-                LinearLayout disabledVibration = alertDialog.findViewById(R.id.disabledVibration);
+                Button longVibration = alertDialog.findViewById(R.id.longVibration);
+                Button shortVibration = alertDialog.findViewById(R.id.shortVibration);
+                Button predeterminedVibration = alertDialog.findViewById(R.id.predeterminedVibration);
+                Button disabledVibration = alertDialog.findViewById(R.id.disabledVibration);
 
                 longVibration.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         vibration_notification="Long";
+                        CheckBox cb =alertDialog.findViewById(R.id.longVibration_cb);
+                        cb.setChecked(Boolean.TRUE);
+                        in.setValue(username,"vibration", vibration_notification);
                         alertDialog.cancel();
                     }
                 });
@@ -116,6 +128,7 @@ public class Notifications extends Fragment {
                     @Override
                     public void onClick(View view) {
                         vibration_notification="Short";
+                        in.setValue(username,"vibration", vibration_notification);
                         alertDialog.cancel();
                     }
                 });
@@ -123,6 +136,7 @@ public class Notifications extends Fragment {
                     @Override
                     public void onClick(View view) {
                         vibration_notification="Predetermined";
+                        in.setValue(username,"vibration", vibration_notification);
                         alertDialog.cancel();
                     }
                 });
@@ -130,6 +144,7 @@ public class Notifications extends Fragment {
                     @Override
                     public void onClick(View view) {
                         vibration_notification="Default";
+                        in.setValue(username,"vibration", vibration_notification);
                         alertDialog.cancel();
                     }
                 });
@@ -137,6 +152,20 @@ public class Notifications extends Fragment {
             }
         });
         alertDialog.show();
+    }
+
+    public void onCheckboxClicked(View view) {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+        // Check which checkbox was clicked
+        switch(view.getId()) {
+            case R.id.longVibration_cb:
+                break;
+            case R.id.shortVibration_cb:
+
+                break;
+            // TODO: Veggie sandwich
+        }
     }
 
     private void light(){
@@ -157,28 +186,32 @@ public class Notifications extends Fragment {
                 light_none.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        vibration_notification="NONE";
+                        light_notification="NONE";
+                        in.setValue(username,"light", light_notification);
                         alertDialog.cancel();
                     }
                 });
                 light_red.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        vibration_notification="RED";
+                        light_notification="RED";
+                        in.setValue(username,"light", light_notification);
                         alertDialog.cancel();
                     }
                 });
                 light_cyan.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        vibration_notification="CYAN";
+                        light_notification="CYAN";
+                        in.setValue(username,"light", light_notification);
                         alertDialog.cancel();
                     }
                 });
                 light_yellow.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        vibration_notification="YELLOW";
+                        light_notification="YELLOW";
+                        in.setValue(username,"light", light_notification);
                         alertDialog.cancel();
                     }
                 });
@@ -209,35 +242,40 @@ public class Notifications extends Fragment {
                 max_priority.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        vibration_notification="MAX";
+                        priority_notification="MAX";
+                        in.setValue(username,"priority", priority_notification);
                         alertDialog.cancel();
                     }
                 });
                 high_priority.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        vibration_notification="HIGH";
+                        priority_notification="HIGH";
+                        in.setValue(username,"priority", priority_notification);
                         alertDialog.cancel();
                     }
                 });
                 default_priority.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        vibration_notification="DEFAULT";
+                        priority_notification="DEFAULT";
+                        in.setValue(username,"priority", priority_notification);
                         alertDialog.cancel();
                     }
                 });
                 low_priority.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        vibration_notification="LOW";
+                        priority_notification="LOW";
+                        in.setValue(username,"priority", priority_notification);
                         alertDialog.cancel();
                     }
                 });
                 min_priority.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        vibration_notification="MIN";
+                        priority_notification="MIN";
+                        in.setValue(username,"priority", priority_notification);
                         alertDialog.cancel();
                     }
                 });

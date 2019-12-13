@@ -9,7 +9,6 @@
             android:id="@+id/home"
             android:icon="@drawable/ic_home"
             android:title="Home" />
-
         <item
             android:id="@+id/treatments"
             android:icon="@drawable/ic_list"
@@ -30,6 +29,10 @@
             android:id="@+id/configuration"
             android:icon="@drawable/ic_configuration"
             android:title="Configuration" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="Log Out" />
     </group>
 
 </menu>

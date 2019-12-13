@@ -27,7 +27,9 @@ import android.widget.VideoView;
 
 import com.example.aidebot.BuildConfig;
 import com.example.aidebot.HomeFragment;
+import com.example.aidebot.MainActivity;
 import com.example.aidebot.R;
+import com.example.aidebot.Storage.InternalStorage;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -42,7 +44,8 @@ public class ConfigurationSystem  extends Fragment {
     AlertDialog alertDialog;
     AlertDialog alertDialog1;
     View mcontainer;
-
+    String username, email;
+    Bitmap profile_picture;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,10 +61,22 @@ public class ConfigurationSystem  extends Fragment {
 
         Button button_to_home = mcontainer.findViewById(R.id.button_to_home);
 
-        TextView username = mcontainer.findViewById(R.id.Name_user);
-        ImageView profile_picture = mcontainer.findViewById(R.id.profile_picture);
+        TextView username_txt = mcontainer.findViewById(R.id.Name_user);
+        TextView email_address = mcontainer.findViewById(R.id.email_address);
+
+        ImageView profile_picture_img = mcontainer.findViewById(R.id.profile_picture);
+
+
         // Take username and profile picture of our user and set it
-        username.setText("Esteve Valls");
+        //get USERNAME AND PHOTO
+        InternalStorage in = new InternalStorage(mcontainer.getContext());
+        username = in.getUsername();
+        profile_picture = in.getPhoto(username);
+
+        username_txt.setText(username);
+        profile_picture_img.setImageBitmap(profile_picture);
+        email = in.getValue(username, "email_user");
+        email_address.setText(email);
 
         help.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +115,7 @@ public class ConfigurationSystem  extends Fragment {
 
             }
         });
-        profile_picture.setOnClickListener(new View.OnClickListener() {
+        profile_picture_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectImage();

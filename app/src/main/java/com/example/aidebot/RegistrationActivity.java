@@ -1,5 +1,7 @@
 package com.example.aidebot;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +13,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.aidebot.Storage.InternalStorage;
+
+import java.util.HashMap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +35,7 @@ public class RegistrationActivity extends AppCompatActivity {
             $                 # end-of-string
     */
     private static final String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
+    String username, password,language, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +64,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     //Handles actual login
-    public void createAccount() {
+    private void createAccount() {
         Log.d(TAG, "Signup");
 
         if (!validate()) {
@@ -115,7 +122,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
 
-    public boolean validate() {
+    private boolean validate() {
         boolean valid = true;
 
         EditText username_txt = findViewById(R.id.new_username);
@@ -123,10 +130,10 @@ public class RegistrationActivity extends AppCompatActivity {
         EditText password_txt = findViewById(R.id.new_password);
         Spinner language_txt = findViewById(R.id.new_language);
 
-        String username = username_txt.getText().toString();
-        String password = password_txt.getText().toString();
-        String email = email_address_txt.getText().toString();
-        String language = language_txt.getSelectedItem().toString();
+        this.username = username_txt.getText().toString();
+        this.password = password_txt.getText().toString();
+        this.email = email_address_txt.getText().toString();
+        this.language = language_txt.getSelectedItem().toString();
 
         if (username.isEmpty() || username.length() < 3) {
             username_txt.setError("At least 3 characters");
@@ -159,23 +166,36 @@ public class RegistrationActivity extends AppCompatActivity {
         return valid;
     }
 
-    public boolean matches(String pwd) {
+    private boolean matches(String pwd) {
         //returns:
         //      - true - if password is valid.
         //      - false - if password not valid.
         return (pwd.matches(pattern));
     }
 
-    public void onSignUPFailed() {
+    private void onSignUPFailed() {
         Toast.makeText(getBaseContext(), "Unable to create account. Try again!", Toast.LENGTH_LONG).show();
         Button signUp_btn = findViewById(R.id.next_button);
         signUp_btn.setEnabled(true);
     }
 
-    public void onSignUPSuccess() {
+    private void onSignUPSuccess() {
         Button signUp_btn = findViewById(R.id.next_button);
         signUp_btn.setEnabled(true);
+        newUser();
         startActivity(new Intent(this, RegistrationActivityOptional.class));
         finish();
     }
+
+    private void newUser(){
+        InternalStorage in = new InternalStorage(RegistrationActivity.this);
+        in.setUsername(username);
+        HashMap<String, String> new_user = new HashMap<>();
+        new_user.put("username", username);
+        new_user.put("password", password);
+        new_user.put("language", language);
+        new_user.put("email_user", email);
+        in.createUser(new_user);
+    }
+
 }
