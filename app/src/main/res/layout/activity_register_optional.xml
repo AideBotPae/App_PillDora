@@ -64,7 +64,7 @@
 
             <EditText
                 android:id="@+id/add_birthdate"
-                android:layout_width="294dp"
+                android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_middle"
                 android:hint="@string/birthday"
@@ -114,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:padding="10dp"
-            android:text="Already Have an Account?  Sign in"
+            android:text="@string/already_account"
             android:textAllCaps="true"
             android:textSize="13dp"
             android:textStyle="bold"

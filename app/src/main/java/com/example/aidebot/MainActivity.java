@@ -1,6 +1,7 @@
 package com.example.aidebot;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.aidebot.Language.SetLanguage;
 import com.example.aidebot.Storage.InternalStorage;
 import com.example.aidebot.configuration.ConfigurationSystem;
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -42,6 +44,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //get USERNAME AND PHOTO
         InternalStorage in = new InternalStorage(MainActivity.this);
         username = in.getUsername();
+        String language = in.getValue(username, "language");
+        System.out.println(language);
+        if (language.startsWith("Spa") || language.startsWith("Es")){
+            SetLanguage.setLocale(MainActivity.this, "es");
+        }
+        else{
+            SetLanguage.setLocale(MainActivity.this, "en");
+        }
 
         FloatingActionButton fab1 = findViewById(R.id.new_med);
         fab1.setOnClickListener(this);
@@ -93,21 +103,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
 
             case R.id.new_med:
-                getSupportActionBar().setTitle("New Medicine \uD83D\uDC8A");
+                getSupportActionBar().setTitle(getString(R.string.new_medicine)+ " \uD83D\uDC8A");
                 getSupportActionBar().setSubtitle("");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new NewMedFragment()).commit();
                 break;
 
             case R.id.new_prescription:
-                getSupportActionBar().setTitle("New Prescription \uD83D\uDCC3");
+                getSupportActionBar().setTitle(getString(R.string.new_prescription)+ " \uD83D\uDCC3");
                 getSupportActionBar().setSubtitle("");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new NewPrescriptionFragment()).commit();
                 break;
 
             case R.id.taking_pill:
-                getSupportActionBar().setTitle("Take Pill \uD83D\uDC8A");
+                getSupportActionBar().setTitle(getString(R.string.take_pill)+ " \uD83D\uDC8A");
                 getSupportActionBar().setSubtitle("");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new TakePillFragment()).commit();
@@ -123,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         menu.collapse();
         switch (item.getItemId()) {
             case R.id.home:
-                getSupportActionBar().setTitle("Home \uD83C\uDFE0");
+                getSupportActionBar().setTitle(getString(R.string.home)+ " \uD83C\uDFE0");
                 getSupportActionBar().setSubtitle("");
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -131,34 +141,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.treatments:
-                getSupportActionBar().setTitle("Treatments \uD83C\uDFE5");
+                getSupportActionBar().setTitle(getString(R.string.treatments) +" \uD83C\uDFE5");
                 getSupportActionBar().setSubtitle("");
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new TreatmentsFragment()).commit();
                 break;
             case R.id.history:
-                getSupportActionBar().setTitle("History \uD83D\uDCD6");
+                getSupportActionBar().setTitle(getString(R.string.history) +" \uD83D\uDCD6");
                 getSupportActionBar().setSubtitle("");
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HistoryFragment()).commit();
                 break;
             case R.id.inventory:
-                getSupportActionBar().setTitle("Inventory ⚖️");
+                getSupportActionBar().setTitle(getString(R.string.inventory)+ " ⚖️");
                 getSupportActionBar().setSubtitle("");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new InventoryFragment()).commit();
                 break;
             case R.id.calendar:
-                getSupportActionBar().setTitle("Calendar \uD83D\uDCC5");
+                getSupportActionBar().setTitle(getString(R.string.calendar)+" \uD83D\uDCC5");
                 getSupportActionBar().setSubtitle("");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new CalendarFragment()).commit();
                 break;
 
             case R.id.configuration:
-                getSupportActionBar().setTitle("Configuration ⚙️");
+                getSupportActionBar().setTitle(getString(R.string.configuration) + " ⚙️");
                 getSupportActionBar().setSubtitle("");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ConfigurationSystem()).commit();
@@ -203,4 +213,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(SetLanguage.onAttach(base, "en"));
+    }
+
+
 }

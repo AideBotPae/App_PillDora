@@ -1,19 +1,21 @@
 package com.example.aidebot;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
+
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.aidebot.Language.SetLanguage;
 import com.example.aidebot.Storage.InternalStorage;
 
 import java.util.HashMap;
@@ -35,12 +37,13 @@ public class RegistrationActivity extends AppCompatActivity {
             $                 # end-of-string
     */
     private static final String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
-    String username, password,language, email;
+    String username, password, language, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        setViewsTranslation();
 
 
         //In case user does have an account, return to SIGN IN display
@@ -53,6 +56,15 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
+        //In case user press TRANSLATE button, translate whole app
+        Button translate_btn = findViewById(R.id.translate_btn);
+        translate_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                translate();
+            }
+        });
+
         //In case user press SIGN UP button, create new account
         Button signUp_btn = findViewById(R.id.next_button);
         signUp_btn.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +73,74 @@ public class RegistrationActivity extends AppCompatActivity {
                 createAccount();
             }
         });
+        Spinner language_txt = findViewById(R.id.new_language);
+        String language = SetLanguage.getLanguage(RegistrationActivity.this);
+        language_txt.setSelection(language.equals("es") ? 1 : 2);
+        language_txt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String language = parent.getItemAtPosition(position).toString();
+                if (language.startsWith("Spa") || language.startsWith("Es")) {
+                    SetLanguage.setLocale(RegistrationActivity.this, "es");
+                } else {
+                    SetLanguage.setLocale(RegistrationActivity.this, "en");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+
+        });
+    }
+
+    private void setViewsTranslation() {
+        Intent intent = getIntent();
+        EditText username_txt = findViewById(R.id.new_username);
+        EditText email_address_txt = findViewById(R.id.new_email_address);
+        EditText password_txt = findViewById(R.id.new_password);
+        Spinner language_txt = findViewById(R.id.new_language);
+
+        this.username = intent.getStringExtra("username");
+        if(username!=""){
+            username_txt.setText(this.username);
+        }
+
+        this.email = intent.getStringExtra("email");
+        if(email!=""){
+            email_address_txt.setText(this.email);
+        }
+
+        this.password = intent.getStringExtra("password");
+        if(password!=""){
+            password_txt.setText(this.password);
+        }
+        this.language = intent.getStringExtra("language");
+        if(language!=""){
+        }
+    }
+
+    private void translate() {
+        Spinner language_txt = findViewById(R.id.new_language);
+        this.language = language_txt.getSelectedItem().toString();
+        TextView errorTextview = (TextView) language_txt.getSelectedView();
+
+        if (language.isEmpty()) {
+            errorTextview.setError("Choose one of these languages");
+        } else {
+            //used to clear the error
+            Intent intent = getIntent();
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            EditText username_txt = findViewById(R.id.new_username);
+            EditText email_address_txt = findViewById(R.id.new_email_address);
+            EditText password_txt = findViewById(R.id.new_password);
+            intent.putExtra("username", username_txt.getText().toString());
+            intent.putExtra("email", email_address_txt.getText().toString());
+            intent.putExtra("password", password_txt.getText().toString());
+            intent.putExtra("language", this.language);
+            startActivity(intent);
+            errorTextview.setError(null);
+        }
     }
 
     //Handles actual login
@@ -80,16 +160,6 @@ public class RegistrationActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Still some parameters to introduce...");
         progressDialog.show();
-
-        EditText username_txt = findViewById(R.id.new_username);
-        EditText email_address_txt = findViewById(R.id.new_email_address);
-        EditText password_txt = findViewById(R.id.new_password);
-        Spinner language_txt = findViewById(R.id.new_language);
-
-        String username = username_txt.getText().toString();
-        String password = password_txt.getText().toString();
-        String email = email_address_txt.getText().toString();
-        String language = language_txt.getSelectedItem().toString();
 
         // TODO: Implement your own signup logic here. Call to presenter methods.
         if (true) {
@@ -119,6 +189,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                     }
                 }, 3000);
+
     }
 
 
@@ -187,7 +258,7 @@ public class RegistrationActivity extends AppCompatActivity {
         finish();
     }
 
-    private void newUser(){
+    private void newUser() {
         InternalStorage in = new InternalStorage(RegistrationActivity.this);
         in.setUsername(username);
         HashMap<String, String> new_user = new HashMap<>();
@@ -196,6 +267,11 @@ public class RegistrationActivity extends AppCompatActivity {
         new_user.put("language", language);
         new_user.put("email_user", email);
         in.createUser(new_user);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(SetLanguage.onAttach(base, "en"));
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.aidebot;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,7 +13,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.aidebot.Language.SetLanguage;
 import com.example.aidebot.Storage.InternalStorage;
+
+import java.util.Set;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,10 +39,13 @@ public class LoginActivity extends AppCompatActivity {
     */
     private static final String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
 
-
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(SetLanguage.onAttach(base));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "You have entered to the Loggin");
+        Log.d(TAG, "You have entered to the Login");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -69,6 +76,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     //Handles actual login
     public void login() {

@@ -36,6 +36,7 @@
     <string name="click_to_insert_new_password">Click to insert new password for the account </string>
     <string name="set">Set</string>
     <string name="change_language">Change Language</string>
+    <string name="sets_language">"Sets the language"</string>
     <string name="change_postal_code">Change postal code</string>
     <string name="establishes_postal_code">Establishes the postal code</string>
     <string name="change_email_adress">Change email address</string>
@@ -53,9 +54,10 @@
     <string name="new_prescription">New Prescription</string>
     <string name="new_medicine">New Medicine</string>
     <string name="sign_up">SIGN UP</string>
+    <string name="translate">TRANSLATE</string>
     <string name="email">Email</string>
     <string name="already_account">Already Have an Account?  Sign in</string>
-    <string name="birthday">Introduce birthday</string>
+    <string name="birthday">Date of birth</string>
     <string name="add_postal_code">Add Postal Code</string>
     <string name="insert_profile_picture">Click to insert your profile picture</string>
     <string name="information_aidebot">Information about Aidebot?</string>

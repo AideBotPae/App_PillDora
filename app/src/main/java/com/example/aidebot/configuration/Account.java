@@ -1,6 +1,9 @@
 package com.example.aidebot.configuration;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,10 +16,13 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.aidebot.Language.SetLanguage;
 import com.example.aidebot.LoginActivity;
 import com.example.aidebot.MainActivity;
 import com.example.aidebot.R;
 import com.example.aidebot.Storage.InternalStorage;
+
+import java.util.Calendar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -175,7 +181,7 @@ public class Account extends Fragment {
                         } else {
                             //used to clear the error
                             errorTextview.setError(null);
-                            in.setValue(username,"language", language);
+                            restartSelf();
                             alertDialog.cancel();
                         }
                     }
@@ -184,6 +190,17 @@ public class Account extends Fragment {
             }
         });
         alertDialog.show();
+    }
+
+    private void restartSelf() {
+        AlarmManager am = (AlarmManager)   getActivity().getSystemService(Context.ALARM_SERVICE);
+        am.set(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis() + 500, // one second
+                PendingIntent.getActivity(getActivity(), 0, getActivity().getIntent(), PendingIntent.FLAG_ONE_SHOT
+                        | PendingIntent.FLAG_CANCEL_CURRENT));
+        Intent i = getActivity().getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage(getActivity().getBaseContext().getPackageName());
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 
     private void change_postalcode() {

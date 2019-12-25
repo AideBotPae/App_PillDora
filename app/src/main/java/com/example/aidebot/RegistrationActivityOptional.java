@@ -30,6 +30,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.aidebot.Language.SetLanguage;
 import com.example.aidebot.Storage.InternalStorage;
 
 import java.io.FileNotFoundException;
@@ -44,7 +45,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RegistrationActivityOptional extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
-    String birth_date, postal_code, gender, age;
+    String birth_date, postal_code, gender, age, username;
     Bitmap roundView;
     AlertDialog alertDialog;
     Context mcontainer;
@@ -55,6 +56,17 @@ public class RegistrationActivityOptional extends AppCompatActivity {
         setContentView(R.layout.activity_register_optional);
         mcontainer = getApplicationContext();
 
+        //get USERNAME AND PHOTO
+        InternalStorage in = new InternalStorage(RegistrationActivityOptional.this);
+        username = in.getUsername();
+        String language = in.getValue(username, "language");
+        System.out.println(language);
+        if (language.startsWith("Spa") || language.startsWith("Es")){
+            SetLanguage.setLocale(RegistrationActivityOptional.this, "es");
+        }
+        else{
+            SetLanguage.setLocale(RegistrationActivityOptional.this, "en");
+        }
 
         //In case user does have an account, return to SIGN IN display
         TextView signIn_text = findViewById(R.id.new_signIn_text_optional);
@@ -356,6 +368,11 @@ public class RegistrationActivityOptional extends AppCompatActivity {
         //Bitmap _bmp = Bitmap.createScaledBitmap(output, 60, 60, false);
         //return _bmp;
         return output;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(SetLanguage.onAttach(base, "en"));
     }
 
 }

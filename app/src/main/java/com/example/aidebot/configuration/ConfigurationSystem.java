@@ -81,7 +81,7 @@ public class ConfigurationSystem  extends Fragment {
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle("Help \uD83C\uDFE0");
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(getString(R.string.help)+ " \uD83C\uDFE0");
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new Help()).commit();
 
@@ -90,7 +90,7 @@ public class ConfigurationSystem  extends Fragment {
         account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle("Account \uD83C\uDFE0");
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(getString(R.string.account)+ " \uD83C\uDFE0");
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new Account()).commit();
 
@@ -100,7 +100,7 @@ public class ConfigurationSystem  extends Fragment {
         notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle("Notifications \uD83C\uDFE0");
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(getString(R.string.notification)+ " \uD83C\uDFE0");
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new Notifications()).commit();
 
