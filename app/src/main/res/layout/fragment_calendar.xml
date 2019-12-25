@@ -41,7 +41,7 @@
                     android:layout_width="186dp"
                     android:layout_height="wrap_content"
                     android:text="@string/option"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -61,8 +61,8 @@
 
                     <Switch
                         android:id="@+id/simpleSwitch"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="53dp"
+                        android:layout_height="45dp"
                         android:layout_gravity="center"
                         android:background="#00000000"
                         android:checked="true"

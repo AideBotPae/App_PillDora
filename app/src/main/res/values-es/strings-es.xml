@@ -82,6 +82,7 @@
     <string name="information_byebye">Toda la información de tu cuenta quedará eliminada. No será posible recuperarla</string>
     <string name="delete_drug">¿Estás seguro que quieres eliminar este medicamento?</string>
     <string name="information">INFORMACIÓN</string>
+    <string name="voice_recorder">INTRODUCIR POR VOZ</string>
     <string name="quantity">Cantidad</string>
     <string name="option">Selecciona una opción:</string>
     <string name="calendar">Calendario</string>
@@ -93,6 +94,7 @@
     <string name="when_pills_expire">¿Cuando caducan las pastillas?</string>
     <string name="introduce_prescription">Introducir Receta Médica</string>
     <string name="introduce_medicine">Introducir Medicamento</string>
+    <string name="introduce_audio">Introducir por voz</string>
     <string name="set_time_reminders">Escribe la hora del recordatorio</string>
     <string name="add_reminders">Añade un recordatorio</string>
     <string name="pill_have_to_take">¿Cuantas pastillas tienes que tomarte?</string>

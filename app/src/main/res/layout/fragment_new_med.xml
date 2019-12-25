@@ -195,6 +195,17 @@
             android:layout_gravity="center"
             android:textSize="18dp"
             android:text="@string/introduce_medicine" />
+
+        <Button
+            android:id="@+id/intr_audio_button"
+            android:background="@drawable/buttonstyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blanco"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/introduce_audio" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

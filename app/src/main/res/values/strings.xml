@@ -99,6 +99,7 @@
     <string name="information_byebye">All information of your account will be permenatly deleted. No possible recover</string>
     <string name="delete_drug">Are you sure you want to delete this medicine?</string>
     <string name="information">INFORMATION</string>
+    <string name="voice_recorder">INTRODUCE BY VOICE</string>
     <string name="quantity">Quantity</string>
     <string name="option">Select one option:</string>
     <string name="calendar">Calendar</string>
@@ -110,6 +111,7 @@
     <string name="when_pills_expire">When does the pills expire?</string>
     <string name="introduce_prescription">Introduce Prescription</string>
     <string name="introduce_medicine">Introduce Medicine</string>
+    <string name="introduce_audio">Introduce by audio</string>
     <string name="set_time_reminders">Set time for the reminders</string>
     <string name="add_reminders">Add Reminders</string>
     <string name="pill_have_to_take">How many pills do you have to take?</string>

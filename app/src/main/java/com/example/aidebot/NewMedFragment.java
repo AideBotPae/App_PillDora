@@ -11,18 +11,25 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
+import com.example.aidebot.audioRecorder.AudioRecorder;
 import com.example.aidebot.data.adapters.CalendarDayPicker;
 
 import java.io.FileNotFoundException;
@@ -56,6 +63,16 @@ public class NewMedFragment extends Fragment implements NumberPicker.OnValueChan
         Button quantity_new_prescription_btn = mcontainer.findViewById(R.id.quantity_new_med_btn);
         Button calendar_new_prescription_btn = mcontainer.findViewById(R.id.calendar_new_med_btn);
         Button intr_prescription_button = mcontainer.findViewById(R.id.intr_med_button);
+        Button intr_audio_button = mcontainer.findViewById(R.id.intr_audio_button);
+
+
+        //Handles audio treatment
+        intr_audio_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                init_audio();
+            }
+        });
 
 
         //initialize calendar for possible end_date use:
@@ -151,6 +168,36 @@ public class NewMedFragment extends Fragment implements NumberPicker.OnValueChan
         return mcontainer;
 
     }
+
+    private void init_audio(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(mcontainer.getContext());
+
+        builder.setView(getLayoutInflater().inflate(R.layout.audio_recorder, null));
+
+        alertDialog = builder.create();
+        // To prevent a dialog from closing when the positive button clicked, set onShowListener to
+        // the AlertDialog
+        alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(final DialogInterface dialogInterface) {
+                AudioRecorder audio = new AudioRecorder(alertDialog, mcontainer.getContext());
+                Button CloseDialog = alertDialog.findViewById(R.id.CloseDialog);
+
+                CloseDialog.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        alertDialog.cancel();
+                    }
+                });
+            }
+        });
+
+        alertDialog.show();
+
+
+    }
+
+
 
     private void presentInformation() {
         HashMap<String, String> parameters = new HashMap<>();
