@@ -36,7 +36,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
-                    tools:text="Product name" />
+                    tools:text="@string/product_name" />
 
 
                 <LinearLayout
@@ -47,8 +47,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/blauFort"
                         android:text="@string/expiration_date"
-                        android:textColor="@color/color_detail_button"
                         android:textSize="10dp" />
 
                     <TextView
@@ -56,6 +56,7 @@
                         style="@style/ProductPriceListStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/Aide"
                         android:textSize="10dp"
                         tools:text="10.0" />
 

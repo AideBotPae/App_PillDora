@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/dialog_alert_delete">
+        android:background="@color/Aide">
 
 
         <LinearLayout
@@ -33,8 +33,8 @@
                     android:lines="2"
                     android:paddingTop="5dp"
                     android:singleLine="false"
-                    android:text="Is this the pill you are going to take?"
-                    android:textColor="@color/blanco"
+                    android:text="@string/is_this_pill"
+                    android:textColor="#000000"
                     android:textSize="15dp" />
 
 
@@ -66,7 +66,8 @@
                             style="@style/ProductPriceListStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Name:"
+                            android:text="@string/name"
+                            android:textColor="@color/blauFort"
                             android:textSize="12dp" />
 
                         <TextView
@@ -89,7 +90,8 @@
                             style="@style/ProductPriceListStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pills in the box:"
+                            android:text="@string/pills_in_the_box"
+                            android:textColor="@color/blauFort"
                             android:textSize="12dp" />
 
                         <TextView
@@ -121,7 +123,7 @@
                         android:background="@drawable/round_button_background_green"
                         android:gravity="center_vertical|center_horizontal"
                         android:onClick="cancelActivity"
-                        android:text="YES"
+                        android:text="@string/yes"
                         android:textColor="#FFF"
                         android:textSize="12sp"
                         android:textStyle="bold" />
@@ -145,7 +147,7 @@
                         android:background="@drawable/round_button_background"
                         android:gravity="center_vertical|center_horizontal"
                         android:onClick="cancelActivity"
-                        android:text="NO"
+                        android:text="@string/no"
                         android:textColor="#FFF"
                         android:textSize="12sp"
                         android:textStyle="bold" />

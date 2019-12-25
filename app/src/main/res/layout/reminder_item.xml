@@ -18,12 +18,12 @@
         card_view:cardCornerRadius="@dimen/card_corner_radius">
 
         <LinearLayout
-            android:layout_width="90dp"
+            android:id="@+id/background_to_change"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/dialog_alert_delete"
+            android:background="@color/blanco"
             android:orientation="vertical"
             android:paddingTop="@dimen/card_padding"
-            android:id="@+id/background_to_change"
 
             android:paddingBottom="@dimen/card_padding">
 
@@ -31,22 +31,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="10sp"
-                android:text="Time ⏰" />
+                android:text="@string/time"
+                android:textColor="@color/Aide"
+                android:textSize="10sp" />
 
 
             <TextView
                 android:id="@+id/time_reminder"
                 style="@style/ProductQuantityListStyle"
-                android:layout_width="56dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textColor="@color/color_list_quantity"
                 android:textSize="14sp"
-                android:textColor="@color/blanco"
                 tools:text="08:00:00" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
 
 </RelativeLayout>

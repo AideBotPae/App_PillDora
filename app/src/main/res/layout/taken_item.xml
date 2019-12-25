@@ -34,7 +34,7 @@
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="10sp"
                 android:textStyle="bold"
-                android:text="Time ⏰" />
+                android:text="@string/time" />
 
 
             <TextView

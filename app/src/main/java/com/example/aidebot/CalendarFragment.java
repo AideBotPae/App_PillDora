@@ -190,8 +190,7 @@ public class CalendarFragment extends Fragment {
         reminders.put("Ibuprofeno", "08:00:00,16:00:00,24:00:00");
         reminders.put("Topamax", "08:00:00,12:00:00,16:00:00,20:00:00,24:00:00");
         reminders.put("Enantyum", "24:00:00");
-        reminders.put("Lionel", "08:00:00,12:00:00,16:00:00,20:00:00,24:00:00");
-        reminders.put("Esteve", "24:00:00");
+        reminders.put("Paracetamol", "08:00:00,12:00:00,16:00:00,20:00:00,24:00:00");
 
 
         //display all reminders get from DataBase

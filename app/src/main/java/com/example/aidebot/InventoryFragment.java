@@ -71,23 +71,11 @@ public class InventoryFragment extends Fragment {
         items3.put("CN", "664029.6");
         list.add(items3);
         HashMap<String, String> items4 = new HashMap<>();
-        items4.put("Name", "Esteve");
+        items4.put("Name", "Paracetamol");
         items4.put("Quantity", "50");
         items4.put("Exp_date", "2020-10-14");
         items4.put("CN", "798116.9");
         list.add(items4);
-        HashMap<String, String> items5 = new HashMap<>();
-        items5.put("Name", "OLABROS");
-        items5.put("Quantity", "120");
-        items5.put("Exp_date", "2021-12-15");
-        items5.put("CN", "965012.4");
-        list.add(items5);
-        HashMap<String, String> items6 = new HashMap<>();
-        items6.put("Name", "JUAJUAS");
-        items6.put("Quantity", "30");
-        items6.put("Exp_date", "2024-04-02");
-        items6.put("CN", "664029.6");
-        list.add(items6);
         HashMap<String, String> items7 = new HashMap<>();
         items7.put("Name", "Ibuprofeno");
         items7.put("Quantity", "50");
@@ -106,24 +94,7 @@ public class InventoryFragment extends Fragment {
         items9.put("Exp_date", "2024-04-02");
         items9.put("CN", "664029.6");
         list.add(items9);
-        HashMap<String, String> items10 = new HashMap<>();
-        items10.put("Name", "Esteve");
-        items10.put("Quantity", "50");
-        items10.put("Exp_date", "2020-10-14");
-        items10.put("CN", "798116.9");
-        list.add(items10);
-        HashMap<String, String> items11 = new HashMap<>();
-        items11.put("Name", "OLABROS");
-        items11.put("Quantity", "120");
-        items11.put("Exp_date", "2021-12-15");
-        items11.put("CN", "965012.4");
-        list.add(items11);
-        HashMap<String, String> items12 = new HashMap<>();
-        items12.put("Name", "JUAJUAS");
-        items12.put("Quantity", "30");
-        items12.put("Exp_date", "2024-04-02");
-        items12.put("CN", "664029.6");
-        list.add(items12);
+
         return list;
     }
 

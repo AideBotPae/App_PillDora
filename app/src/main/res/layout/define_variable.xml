@@ -24,7 +24,7 @@
             android:layout_gravity="center"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
-            android:text="TAKEN"
+            android:text="@string/taken"
             android:textColor="@color/cardview_dark_background"
             android:textSize="20sp" />
 
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="sans-serif-condensed"
-            android:text="NOT TAKEN"
+            android:text="@string/not_taken"
             android:textColor="@color/cardview_dark_background"
             android:textSize="20sp" />
 

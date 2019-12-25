@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#D81B60</color>
-    <color name="colorPrimaryDark">#FE5295</color>
+    <color name="colorPrimaryDark">#41D6C5</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="blauCel">#4FC3F7</color>
@@ -17,6 +17,14 @@
 
     <!-- Primary dark color for the editor -->
     <color name="editor_colorPrimaryDark">#338a3e</color>
+
+    <!-- COLOR DE BOTONS DEPARTURE, RETURN AND DAY -->
+    <color name="COLOR_FONDO_BOTONS">#C8FFFFFF</color>x
+
+    <!-- COLOR DE FONDO ENUNCIAT MEDICAMENT -->
+    <color name="COLOR_FONDO_MEDICAMENT">#45686868</color>
+
+    <color name="Aide">#41D6C5</color>
 
     <color name="gradient_center_color">#880d0d0f</color>
     <color name="gradient_end_color">#885d5d5e</color>

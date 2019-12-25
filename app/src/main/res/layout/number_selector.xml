@@ -7,7 +7,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="@drawable/green_gradient_background">
+        android:background="@drawable/aide_gradient">
 
         <TextView
             android:layout_width="wrap_content"
@@ -15,7 +15,11 @@
             android:text="Choose exact quantity"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
-            android:textSize="15dp"></TextView>
+            android:textColor="@color/blauFort"
+            android:textStyle="bold"
+            android:textSize="15dp">
+
+        </TextView>
 
         <NumberPicker
             android:id="@+id/numberPicker1"
@@ -35,8 +39,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginRight="2dp"
                 android:layout_marginTop="20dp"
-
+                android:background="@drawable/button"
+                android:layout_marginBottom="10dp"
                 android:text="Cancel" />
 
             <Button
@@ -45,7 +51,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="16dp"
-
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/button"
+                android:layout_marginBottom="10dp"
                 android:text="Set" />
         </LinearLayout>
     </LinearLayout>

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/graylight"
+    android:background="@drawable/aide_gradient"
     android:orientation="vertical">
 
       <LinearLayout
@@ -22,7 +22,7 @@
           <TextView
               android:layout_width="200dp"
               android:layout_height="wrap_content"
-              android:text="Notifcations tones"
+              android:text="@string/notifications_tone"
               android:textStyle="bold"
               android:textSize="20dp"
               ></TextView>
@@ -30,7 +30,7 @@
               <TextView
                   android:layout_width="200dp"
                   android:layout_height="wrap_content"
-                  android:text="Reproduces sounds for the in or out notifcations"
+                  android:text="@string/sound"
                   android:textStyle="italic"
                   android:textSize="15dp"
                   ></TextView>
@@ -62,7 +62,7 @@
             <TextView
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Notifcations Vibration"
+                android:text="@string/notification_vibration"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 ></TextView>
@@ -70,7 +70,7 @@
             <TextView
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Sets the type of vibration for the notification"
+                android:text="@string/vibration"
                 android:textStyle="italic"
                 android:textSize="15dp"
                 ></TextView>
@@ -81,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="Set">
+            android:hint="@string/set">
         </Button>
 
     </LinearLayout>
@@ -103,7 +103,7 @@
             <TextView
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Notifications Light"
+                android:text="@string/notification_light"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 ></TextView>
@@ -111,7 +111,7 @@
             <TextView
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Establishes the colour light fot the notifications"
+                android:text="@string/light"
                 android:textStyle="italic"
                 android:textSize="15dp"
                 ></TextView>
@@ -122,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="Set">
+            android:hint="@string/set">
         </Button>
 
     </LinearLayout>
@@ -144,7 +144,7 @@
             <TextView
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Notifcations Priority"
+                android:text="@string/notification_priority"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 ></TextView>
@@ -152,7 +152,7 @@
             <TextView
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Priority of the notifications"
+                android:text="@string/priority"
                 android:textStyle="italic"
                 android:textSize="15dp"
                 ></TextView>
@@ -163,7 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="Set">
+            android:hint="@string/set">
         </Button>
     </LinearLayout>
 
@@ -184,7 +184,7 @@
             <TextView
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Email notification"
+                android:text="@string/email_Notification"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 ></TextView>
@@ -192,7 +192,7 @@
             <TextView
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Notification will also be send to email of user"
+                android:text="@string/email_notification"
                 android:textStyle="italic"
                 android:textSize="15dp"
                 ></TextView>
@@ -216,7 +216,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="35dp"
         android:background="@drawable/buttonstyle"
-        android:text="Go back"
+        android:text="@string/go_back"
         android:textColor="#fff" />
 
 

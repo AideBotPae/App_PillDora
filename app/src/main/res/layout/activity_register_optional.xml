@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg">
+    android:background="@drawable/aide_gradient">
 
 
     <LinearLayout
@@ -20,16 +20,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
-            android:text="SIGN UP"
-            android:textColor="#FFFFFF"
+            android:text="@string/sign_up"
+            android:textColor="@color/blauFort"
             android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
-            android:text="Click to insert your profile picture"
-            android:textColor="#FFFFFF"
+            android:text="@string/insert_profile_picture"
+            android:textColor="@color/blauFort"
             android:textSize="16sp" />
 
         <ImageView
@@ -64,10 +64,10 @@
 
             <EditText
                 android:id="@+id/add_birthdate"
-                android:layout_width="250dp"
+                android:layout_width="294dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_middle"
-                android:hint="Introduce birth day"
+                android:hint="@string/birthday"
                 android:inputType="date|datetime"
                 android:padding="15dp" />
 
@@ -83,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_top"
-            android:hint="Add Postal Code"
+            android:hint="@string/add_postal_code"
             android:inputType="text"
             android:padding="15dp" />
 
@@ -103,9 +103,9 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/button"
             android:foreground="?android:attr/selectableItemBackground"
-            android:text="SIGN UP"
+            android:text="@string/sign_up"
             android:textAllCaps="false"
-            android:textColor="#FE5295"
+            android:textColor="@color/blauFort"
             android:textSize="17sp" />
 
         <TextView
@@ -118,7 +118,7 @@
             android:textAllCaps="true"
             android:textSize="13dp"
             android:textStyle="bold"
-            android:textColor="#FAD0E1"
+            android:textColor="@color/blauFort"
             android:fontFamily="sans-serif" />
 
     </LinearLayout>

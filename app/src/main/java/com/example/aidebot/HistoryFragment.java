@@ -86,8 +86,6 @@ public class HistoryFragment extends Fragment {
         reminders.put("Ibuprofeno", "reminders=08:00:00,16:00:00,24:00:00;taken=true");
         reminders.put("Topamax", "reminders=08:00:00,12:00:00,16:00:00,20:00:00,24:00:00;taken=false");
         reminders.put("Enantyum", "reminders=24:00:00;taken=true");
-        reminders.put("Messi", "reminders=08:00:00,12:00:00,16:00:00,20:00:00,24:00:00;taken=true");
-        reminders.put("Viagra", "reminders=24:00:00;taken=false");
 
         //display all reminders get from DataBase
         LinearLayout linearLayout = getView().findViewById(R.id.history_layout);

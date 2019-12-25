@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/green_gradient_background"
+    android:background="@drawable/aide_gradient"
     tools:context=".NewPrescriptionFragment">
 
     <LinearLayout
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="52dp"
-            android:text="New Prescription"
+            android:text="@string/new_prescription"
             android:textColor="@color/blauFort"
             android:textSize="25dp"
             android:textStyle="bold|italic" />
@@ -35,8 +35,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="30dp"
-                android:text="Name of the medicine (CN)"
-                android:textColor="@color/blanco"
+                android:text="@string/medicine_name"
+                android:textColor="@color/blauFort"
                 android:textSize="15dp"
                 android:textStyle="bold|italic"
                 app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,7 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:text="📷"
-                    android:textSize="10dp"
+                    android:textSize="20dp"
                     android:padding="@dimen/card_padding" />
 
 
@@ -95,8 +95,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="30dp"
-                android:text="How often do you take this medicine (in hours)?"
-                android:textColor="@color/blanco"
+                android:text="@string/often_pills"
+                android:textColor="@color/blauFort"
                 android:textSize="15dp"
                 android:textStyle="bold|italic"
                 app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +129,7 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:text="⏰"
-                    android:textSize="10dp"
+                    android:textSize="20dp"
                     android:padding="@dimen/card_padding" />
             </LinearLayout>
         </LinearLayout>
@@ -144,8 +144,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="30dp"
-                android:text="How many pills do you have to take?"
-                android:textColor="@color/blanco"
+                android:text="@string/pill_have_to_take"
+                android:textColor="@color/blauFort"
                 android:textSize="15dp"
                 android:textStyle="bold|italic"
                 app:layout_constraintStart_toStartOf="parent"
@@ -178,7 +178,7 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:text="#️⃣"
-                    android:textSize="10dp"
+                    android:textSize="20dp"
                     android:padding="@dimen/card_padding" />
             </LinearLayout>
         </LinearLayout>
@@ -193,8 +193,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="30dp"
-                android:text="When does this treatment end?"
-                android:textColor="@color/blanco"
+                android:text="@string/when_treatment_expire"
+                android:textColor="@color/blauFort"
                 android:textSize="15dp"
                 android:textStyle="bold|italic"
                 app:layout_constraintStart_toStartOf="parent"
@@ -242,7 +242,7 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:padding="@dimen/card_padding"
-                    android:text="CHRONIC"
+                    android:text="@string/chronic"
                     android:textSize="10dp" />
             </LinearLayout>
         </LinearLayout>
@@ -263,7 +263,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Insert Prescription" />
+            android:background="@drawable/buttonstyle"
+            android:textColor="@color/blanco"
+            android:textSize="18dp"
+            android:text="@string/new_prescription" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

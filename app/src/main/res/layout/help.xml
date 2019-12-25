@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/graylight"
+    android:background="@drawable/aide_gradient"
     android:orientation="vertical">
 
         <EditText
@@ -13,7 +13,7 @@
             android:layout_marginTop="25dp"
             android:background="@drawable/edittext_background"
             android:gravity="top|left"
-            android:hint="Describe your problem ..."
+            android:hint="@string/describe_problem"
             android:inputType="textMultiLine"
             android:lines="8"
             android:maxLines="10"
@@ -26,8 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:paddingTop="15dp"
-            android:text="Add screenshots of the problem (optional)"
-            android:textColor="@color/endblue"></TextView>
+            android:text="@string/screenshot_problem"
+            android:textColor="@color/blauFort"></TextView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="300dp"
@@ -120,8 +120,8 @@
                 android:autoSizeMaxTextSize="@dimen/_12sdp"
                 android:clickable="true"
                 android:paddingLeft="30dp"
-                android:text="Have you already read our Frequent Questions?"
-                android:textColor="@color/endblue"
+                android:text="@string/read"
+                android:textColor="@color/blauFort"
                 android:textStyle="bold" />
 
             <Button
@@ -130,7 +130,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:background="@color/graylight"
-                android:text="Send" />
+                android:textSize="20dp"
+                android:text="@string/send" />
         </LinearLayout>
 
     <Button
@@ -140,7 +141,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="35dp"
         android:background="@drawable/buttonstyle"
-        android:text="Go back"
+        android:text="@string/go_back"
         android:textColor="#fff" />
 
 

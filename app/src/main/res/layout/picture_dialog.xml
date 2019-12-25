@@ -7,6 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/blanco"
         android:orientation="vertical">
 
         <LinearLayout
@@ -17,6 +18,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:background="@color/Aide"
                 android:orientation="horizontal">
 
                 <TextView
@@ -66,6 +68,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/view1"
             android:layout_alignParentLeft="true"
+
+            android:background="@drawable/button"
+            android:textSize="20dp"
             android:text="Take Photo   📸" />
 
         <Button
@@ -73,14 +78,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:background="@drawable/button"
+            android:textSize="20dp"
             android:text="Choose from Gallery    🖼️" />
 
         <Button
             android:id="@+id/close_dialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:background="@drawable/button"
             android:layout_alignParentRight="true"
+            android:textSize="20dp"
             android:text="Cancel    ❌" />
 
 

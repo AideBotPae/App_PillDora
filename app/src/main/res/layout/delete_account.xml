@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/dialog_alert_delete">
+        android:background="@color/Aide">
 
 
         <LinearLayout
@@ -33,19 +33,19 @@
                     android:paddingTop="5dp"
                     android:singleLine="false"
                     android:textStyle="bold"
-                    android:text="Are you sure you want to delete your account?"
-                    android:textColor="@color/blanco"
+                    android:text="@string/delete_Account"
+                    android:textColor="#000000"
                     android:textSize="15dp" />
 
                 <TextView
                     style="@style/ProductNameListStyle"
-                    android:layout_width="200dp"
+                    android:layout_width="244dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:singleLine="false"
                     android:lines="2"
-                    android:text="All information of your account will be permenatly deleted. No possible recover"
-                    android:textColor="@color/blanco"
+                    android:singleLine="false"
+                    android:text="@string/information_byebye"
+                    android:textColor="#000000"
                     android:textSize="12dp" />
             </LinearLayout>
 
@@ -73,7 +73,7 @@
                         android:background="@drawable/round_button_background_green"
                         android:gravity="center_vertical|center_horizontal"
                         android:onClick="cancelActivity"
-                        android:text="YES"
+                        android:text="@string/yes"
                         android:textColor="#FFF"
                         android:textSize="12sp"
                         android:textStyle="bold" />
@@ -97,7 +97,7 @@
                         android:background="@drawable/round_button_background"
                         android:gravity="center_vertical|center_horizontal"
                         android:onClick="cancelActivity"
-                        android:text="NO"
+                        android:text="string/no"
                         android:textColor="#FFF"
                         android:textSize="12sp"
                         android:textStyle="bold" />

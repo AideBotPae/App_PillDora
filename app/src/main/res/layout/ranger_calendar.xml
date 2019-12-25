@@ -10,10 +10,10 @@
 
     <LinearLayout
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="53dp"
         android:layout_gravity="center"
         android:layout_marginRight="16dp"
-        android:background="@drawable/dialog_alert_delete"
+        android:background="#07000000"
         android:baselineAligned="false"
         android:orientation="vertical">
 
@@ -22,9 +22,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="sans-serif-condensed"
-            android:text="Leaving date: "
-            android:textColor="@color/blanco"
-            android:textSize="20sp" />
+            android:text="@string/Departure_Day"
+            android:textColor="@color/color_list_quantity"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvStartDate"
@@ -34,17 +35,16 @@
             android:layout_marginBottom="5dp"
             android:fontFamily="sans-serif-light"
             android:gravity="center"
-
-            android:textColor="@color/blanco"
+            android:textColor="@color/color_list_quantity"
             android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="53dp"
         android:layout_gravity="center"
         android:layout_marginLeft="16dp"
-        android:background="@drawable/dialog_alert_delete"
+        android:background="#07000000"
         android:baselineAligned="false"
         android:orientation="vertical"
         android:paddingLeft="16dp"
@@ -56,8 +56,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="sans-serif-condensed"
-            android:text="Arrival date: "
-            android:textColor="@color/blanco"
+            android:text="@string/Return_day"
+            android:textStyle="bold"
+            android:textColor="@color/color_list_quantity"
             android:textSize="20sp" />
 
         <TextView
@@ -68,8 +69,9 @@
             android:layout_marginBottom="5dp"
             android:fontFamily="sans-serif-light"
             android:gravity="center"
-            android:textColor="@color/blanco"
+            android:textColor="@color/color_list_quantity"
             android:textSize="18sp" />
     </LinearLayout>
+
 
 </LinearLayout>

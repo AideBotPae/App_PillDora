@@ -154,20 +154,6 @@ public class Notifications extends Fragment {
         alertDialog.show();
     }
 
-    public void onCheckboxClicked(View view) {
-        // Is the view now checked?
-        boolean checked = ((CheckBox) view).isChecked();
-        // Check which checkbox was clicked
-        switch(view.getId()) {
-            case R.id.longVibration_cb:
-                break;
-            case R.id.shortVibration_cb:
-
-                break;
-            // TODO: Veggie sandwich
-        }
-    }
-
     private void light(){
         AlertDialog.Builder builder = new AlertDialog.Builder(mcontainer.getContext());
         builder.setView(getLayoutInflater().inflate(R.layout.light_dialog, null));
