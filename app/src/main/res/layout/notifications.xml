@@ -24,7 +24,7 @@
               android:layout_height="wrap_content"
               android:text="@string/notifications_tone"
               android:textStyle="bold"
-              android:textSize="20dp"
+              android:textSize="15dp"
               ></TextView>
 
               <TextView
@@ -32,7 +32,7 @@
                   android:layout_height="wrap_content"
                   android:text="@string/sound"
                   android:textStyle="italic"
-                  android:textSize="15dp"
+                  android:textSize="10dp"
                   ></TextView>
           </LinearLayout>
 
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/notification_vibration"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 ></TextView>
 
             <TextView
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/vibration"
                 android:textStyle="italic"
-                android:textSize="15dp"
+                android:textSize="10dp"
                 ></TextView>
         </LinearLayout>
 
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/notification_light"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 ></TextView>
 
             <TextView
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/light"
                 android:textStyle="italic"
-                android:textSize="15dp"
+                android:textSize="10dp"
                 ></TextView>
         </LinearLayout>
 
@@ -146,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/notification_priority"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 ></TextView>
 
             <TextView
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/priority"
                 android:textStyle="italic"
-                android:textSize="15dp"
+                android:textSize="10dp"
                 ></TextView>
         </LinearLayout>
 
@@ -186,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/email_Notification"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 ></TextView>
 
             <TextView
@@ -194,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/email_notification"
                 android:textStyle="italic"
-                android:textSize="15dp"
+                android:textSize="10dp"
                 ></TextView>
         </LinearLayout>
 

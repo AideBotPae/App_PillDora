@@ -105,6 +105,8 @@
     <string name="calendar">Calendar</string>
     <string name="journey">Journey</string>
     <string name="next_reminders">Next Reminders</string>
+    <string name="reminders_of">Reminders of:</string>
+    <string name="user_cancel">User cancel</string>
     <string name="current_treatments">Currents Treatments</string>
     <string name="medicine_name">Name of the medicine (CN)</string>
     <string name="pills_in_the_package">How many pills are in the package?</string>

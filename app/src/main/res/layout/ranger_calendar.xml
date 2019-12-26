@@ -25,7 +25,8 @@
             android:text="@string/Departure_Day"
             android:textColor="@color/color_list_quantity"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/tvStartDate"
@@ -57,6 +58,7 @@
             android:layout_gravity="center"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/Return_day"
+            android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/color_list_quantity"
             android:textSize="20sp" />

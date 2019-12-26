@@ -67,7 +67,7 @@ public class CalendarFragment extends Fragment {
                 if (isChecked) {
                     // The toggle is enabled --> Calendar
                     mode = true;
-                    modeselector.setText("Calendar");
+                    modeselector.setText(getString(R.string.calendar));
                     LinearLayout range_calendar = (LinearLayout) set_activty_layout.findViewById(R.id.range_calendar_layout);
                     set_activty_layout.removeView(range_calendar);
                     LinearLayout day_calendar = (LinearLayout) getLayoutInflater().inflate(R.layout.day_calendar, null);
@@ -80,7 +80,7 @@ public class CalendarFragment extends Fragment {
                 } else {
                     // The toggle is disabled --> Journey
                     mode = false;
-                    modeselector.setText("Journey");
+                    modeselector.setText(getString(R.string.journey));
                     LinearLayout day_calendar = (LinearLayout) set_activty_layout.findViewById(R.id.day_calendar_layout);
                     set_activty_layout.removeView(day_calendar);
                     LinearLayout range_calendar = (LinearLayout) getLayoutInflater().inflate(R.layout.ranger_calendar, null);
@@ -125,7 +125,7 @@ public class CalendarFragment extends Fragment {
                 // +1 because January is zero
                 final String selectedDate = day + " / " + (month + 1) + " / " + year;
                 TextView selection_textdate = getView().findViewById(R.id.selection_date);
-                selection_textdate.setText("Reminders of:");
+                selection_textdate.setText(getString(R.string.reminders_of));
                 TextView selection_date = getView().findViewById(R.id.day_of_reminders);
                 selection_date.setText(selectedDate);
 
@@ -156,7 +156,7 @@ public class CalendarFragment extends Fragment {
         pickerFrag.setCallback(new CalendarRangePicker.Callback() {
             @Override
             public void onCancelled() {
-                Toast.makeText(mcontainer.getContext(), "User cancel", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mcontainer.getContext(), getString(R.string.user_cancel), Toast.LENGTH_SHORT).show();
             }
 
             @Override

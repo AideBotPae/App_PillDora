@@ -88,6 +88,8 @@
     <string name="calendar">Calendario</string>
     <string name="journey">Viaje</string>
     <string name="next_reminders">Próximos recordatorios</string>
+    <string name="reminders_of">Recordatorios del:</string>
+    <string name="user_cancel">Cancelación del usuario</string>
     <string name="current_treatments">Tratamientos actuales</string>
     <string name="medicine_name">Nombre del medicamento (CN)</string>
     <string name="pills_in_the_package">¿Cuantas pastillas hay en la caja?</string>
@@ -116,7 +118,7 @@
     <string name="log_out_1">Cerrar Sesión</string>
     <string name="reminders_to_be_set">ESCOGE NUEVOS REMINDERS:</string>
     <string name="notifications_tone">Tono de notificaciones</string>
-    <string name="sound">Reproduces sounds for the in or out notifcations</string>
+    <string name="sound">Reproduce el sonido de las notificaciones de entrada o salida</string>
     <string name="notification_vibration">Vibración para las notificaciones</string>
     <string name="vibration">Elige el tipo de vibración para las notificaciones</string>
     <string name="notification_light">Luz de las notificaciones</string>
